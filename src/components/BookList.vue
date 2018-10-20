@@ -1,12 +1,28 @@
 <template>
-    <div>{{ title }}</div>
+    <div>
+            <h1>{{title}}</h1>
+     <ul>
+                 <book-item v-for="book in books" :book='book'></book-item>
+               
+    </ul>
+ </div>   
 </template>
 
-<script> 
+<script>
+import BookItem from './BookItem'; 
 export default {
     name: 'BookList',
+    components: {
+        BookItem
+    },
     data() {
-        return {title: 'All Books'}
+        return {title: 'All Books', 
+        books:[
+        {title: 'Self-Reliance', author: 'Ralph Walk Emerson'},
+        {title: 'American Gods', author: 'Neil Gaiman'},
+        {title: 'Amusing Ourselves to Death', author: 'Neil Postman'}
+        ]
+        }
     }
 }
 </script>
@@ -15,4 +31,8 @@ export default {
 h1, h2 {
     font-weight: 400
     }
-</style>
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    </style>
